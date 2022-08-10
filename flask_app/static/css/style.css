@@ -1,0 +1,14 @@
+.table-wrapper {
+    max-height: 75vh;
+    overflow: auto;
+}
+
+.form-container {
+    margin-left: 20px;
+    width: 500px;
+}
+
+.grid-container {
+    margin-left: 20px;
+    margin-right: 20px;
+}

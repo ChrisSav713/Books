@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="h3">Title: {{book_item.name}}</h1>
+            <div class="table-wrapper">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Favorited by</th>
+                        </tr>
+                    </thead>
+                    {% for author in authors %}
+                    <tr>
+                        <td hidden>{{ author.id }}</td>
+                        <td> {{ author.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h2 class="h3">Add Book's Favorite</h2>
+            <form action="/add_favorite_author" method="POST">
+                <div class="form-group">
+                    <input hidden type="text" name="book" value="{{book_item.id}}">
+                    <label for="author_id">Author</label>
+                    <select class="form-control" name="author_id">
+                        {% for author_item in all_authors %}
+                            <option value="{{author_item.id}}">{{author_item.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input class="btn btn-primary mt-2" type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+    <a href='/' class="btn btn-primary mt-2">Home</a>
+</div>
+{% endblock %}

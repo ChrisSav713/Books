@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="h3">New Author</h1>
+            <form action="/create_author" method="POST">
+                <div class="form-group">
+                    <label for="name">New Author</label>
+                    <input class="form-control" type="text" name="name">
+                </div>
+                <input class="btn btn-primary mt-2" type="submit" value="Create">
+            </form>
+        </div>
+        <div class="col">
+            <div class="table-wrapper">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>All Authors</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for author_item in authors %}
+                        <tr>
+                            <td hidden>{{ author_item.id }}</td>
+                            <td>
+                                <a class="btn btn-link" href="/author/{{ author_item.id }}">{{ author_item.name }}</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <a class="btn btn-primary mt-2" href="/render_books">Add Book</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

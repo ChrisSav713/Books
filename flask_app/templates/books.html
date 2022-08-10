@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="h3">New Book</h1>
+            <form action="/create_book" method="POST">
+                <div class="form-group">
+                    <label for="name">Title</label>
+                    <input class="form-control" type="text" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="name">Number of Pages</label>
+                    <input class="form-control" type="text" name="num_of_pages">
+                </div>
+                <input class="btn btn-primary mt-2" type="submit" value="Create">
+            </form>
+        </div>
+        <div class="col">
+            <div class="table-wrapper">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>All Books</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book_item in books %}
+                        <tr>
+                            <td hidden>{{ book_item.id }}</td>
+                            <td>
+                                <a class="btn btn-link" href="/book/{{ book_item.id }}">{{ book_item.title }}</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a href='/' class="btn btn-primary mt-2">Home</a>
+</div>
+{% endblock %}
